@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,6 +33,8 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private static DecimalFormat FORMAT = new DecimalFormat("#.###");
+
+
     LocationManager locationManager;
     LocationListener locationListener;
     SensorManager sensorManager;
@@ -52,7 +55,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textView.setTextSize(20);
         textView.setGravity(Gravity.CENTER);
         staticCell = createVerticalLayout();
-        staticCell.setBackgroundColor(Color.rgb(200, 200, 200));
+
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setShape(GradientDrawable.RECTANGLE);
+        drawable.setStroke(10, Color.BLACK);
+        drawable.setCornerRadius(8);
+        drawable.setColor(Color.LTGRAY);
+        staticCell.setBackground(drawable);
+
         viewGroup.addView(textView);
         viewGroup.addView(staticCell);
 
@@ -63,11 +73,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         LinearLayout linearLayout = new LinearLayout(MainActivity.this);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
         );
         linearLayout.setLayoutParams(params);
-        linearLayout.setPadding(10, 10, 10, 40);
+        linearLayout.setPadding(25, 10, 10, 10);
+        params.setMargins(10, 10, 10, 10);
         return linearLayout;
     }
 
@@ -96,10 +107,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     TextView textView = new TextView(MainActivity.this);
                     textView.setTextSize(20);
                     textView.setText("Point #" + readingNumber);
+                    textView.setGravity(Gravity.CENTER);
                     readingNumber++;
                     baseLayout.addView(textView, 2);
 
                     LinearLayout linearLayout = createVerticalLayout();
+
+                    GradientDrawable drawable = new GradientDrawable();
+                    drawable.setShape(GradientDrawable.RECTANGLE);
+                    drawable.setStroke(10, Color.BLACK);
+                    drawable.setCornerRadius(8);
+                    drawable.setColor(Color.LTGRAY);
+                    linearLayout.setBackground(drawable);
 
                     Location origin = userLocation.getOriginLocation();
                     for (TextView view : getFormatted(userLocation, origin.getLongitude(), origin.getLatitude(), origin.getAltitude())) {
