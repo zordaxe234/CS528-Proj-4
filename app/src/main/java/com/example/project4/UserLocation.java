@@ -3,7 +3,7 @@ package com.example.project4;
 import android.location.Location;
 
 public class UserLocation {
-    public static final double LOCATION_CHANGE_RANGE = 1; //distance to move before new textview shows a new location in meters
+    public static final double LOCATION_CHANGE_RANGE = 10; //distance to move before new textview shows a new location in meters
 
     private Location originLocation;
     private float currentSensorValue;
