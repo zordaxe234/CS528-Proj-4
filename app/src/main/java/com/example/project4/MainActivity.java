@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         // Size of list is 1, and this is the static cell
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         GradientDrawable drawable = new GradientDrawable();
         drawable.setShape(GradientDrawable.RECTANGLE);
-        drawable.setStroke(10, Color.BLACK);
+        drawable.setStroke(5, Color.DKGRAY);
         drawable.setCornerRadius(8);
         drawable.setColor(Color.LTGRAY);
         staticCell.setBackground(drawable);
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                     GradientDrawable drawable = new GradientDrawable();
                     drawable.setShape(GradientDrawable.RECTANGLE);
-                    drawable.setStroke(10, Color.BLACK);
+                    drawable.setStroke(5, Color.DKGRAY);
                     drawable.setCornerRadius(8);
                     drawable.setColor(Color.LTGRAY);
                     linearLayout.setBackground(drawable);
@@ -137,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 LinearLayout linearLayout = (LinearLayout) baseLayout.getChildAt(1);
                 linearLayout.removeAllViews();
                 for (TextView textView : getFormatted(userLocation, location.getLongitude(), location.getLatitude(), location.getAltitude())) {
+                    textView.setTextColor(Color.BLACK);
                     linearLayout.addView(textView);
                 }
             }

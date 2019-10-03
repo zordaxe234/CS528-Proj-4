@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Project 4</string>
+    <color name="background_Gray">#D1D1D1</color>
 </resources>
